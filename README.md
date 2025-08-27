@@ -35,7 +35,7 @@ Este proyecto es el backend de la aplicación de gestión de películas y turnos
 1. Clonar el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/cine-backend.git
+git clone https://github.com/joehhhh11/sirena-back
 cd cine-backend
 ```
 
@@ -224,4 +224,5 @@ JWT_REFRESH_EXPIRES_IN="7d"
 - La elección de NestJS + Angular + Tailwind permite un stack **TypeScript fullstack**, rápido y mantenible.
 - La colección Postman permite probar toda la API sin necesidad de frontend inicialmente.
 - La base de datos contiene un usuario admin (`adminxd@example.com`) listo para pruebas.
+
 
