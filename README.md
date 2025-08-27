@@ -62,22 +62,48 @@ JWT_REFRESH_EXPIRES_IN="7d"
 - La base de datos está definida en el proyecto usando PostgreSQL.
 - Prisma se encarga de generar el esquema y migraciones.
 
-1. Crear base de datos:
+1. Inicializar Prisma:
+
+```bash
+npx prisma init
+```
+
+Esto creará:
+
+- `prisma/schema.prisma`
+- `.env` (ya lo tenemos con DATABASE_URL)
+- Carpeta `prisma/` para migraciones y seeds
+
+2. Definir el esquema en `prisma/schema.prisma` con tus modelos (`Cliente`, `Pelicula`, `Turno`, etc.)
+
+3. Generar el cliente Prisma:
+
+```bash
+npx prisma generate
+```
+
+4. Crear la base de datos (si no existe):
 
 ```sql
 CREATE DATABASE sirenadb;
 ```
 
-2. Ejecutar migraciones de Prisma:
+5. Crear migración inicial:
 
 ```bash
 npx prisma migrate dev --name init
 ```
 
-3. Ejecutar seed (usuarios y datos de prueba):
+6. Ejecutar seed (usuarios y datos de prueba):
 
 ```bash
 npx prisma db seed
+```
+
+7. Abrir Prisma Studio (opcional, para ver datos):
+
+```bash
+npx prisma studio
 ```
 
 ---
@@ -198,3 +224,4 @@ JWT_REFRESH_EXPIRES_IN="7d"
 - La elección de NestJS + Angular + Tailwind permite un stack **TypeScript fullstack**, rápido y mantenible.
 - La colección Postman permite probar toda la API sin necesidad de frontend inicialmente.
 - La base de datos contiene un usuario admin (`adminxd@example.com`) listo para pruebas.
+
