@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+  
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Pelicula {
+  id           Int       @id @default(autoincrement())
+  titulo       String    @unique
+  sinopsis     String?
+  duracionMin  Int
+  clasificacion String
+  genero       String[]
+  estado       Estado    @default(ACTIVO)
+  fechaEstreno DateTime
+
+  turnos       Turno[]  
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime? 
+}
+
+model Turno {
+  id          Int       @id @default(autoincrement())
+  pelicula    Pelicula  @relation(fields: [peliculaId], references: [id])
+  peliculaId  Int
+  sala        String
+  inicio      DateTime
+  fin         DateTime
+  precio      Float
+  idioma      Idioma
+  formato     Formato
+  aforo       Int
+  estado      Estado    @default(ACTIVO)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime? 
+
+  @@unique([sala, inicio, fin], name: "unico_turno_por_sala")
+}
+
+model Cliente {
+  id         Int       @id @default(autoincrement())
+  email      String    @unique
+  password   String
+  nombre     String?
+  estado     Estado    @default(ACTIVO)
+  currentHashedRefreshToken String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime? 
+}
+
+enum Estado {
+  ACTIVO
+  INACTIVO
+}
+
+enum Idioma {
+  DOB
+  SUB
+}
+
+enum Formato {
+  D2
+  D3
+}
