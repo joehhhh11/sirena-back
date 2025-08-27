@@ -1,0 +1,180 @@
+{
+  "info": {
+    "name": "Cine API",
+    "_postman_id": "d1c4a2f7-1234-5678-9101-abcdef123456",
+    "description": "Colección Postman para la API de Cine",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"Password123!\",\n  \"nombre\": \"Usuario\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/register", "host": ["{{baseUrl}}"], "path": ["api","auth","register"] }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api","auth","login"] }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/auth/refresh", "host": ["{{baseUrl}}"], "path": ["api","auth","refresh"] }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/auth/logout", "host": ["{{baseUrl}}"], "path": ["api","auth","logout"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Get All Clients",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/client", "host": ["{{baseUrl}}"], "path": ["api","client"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Peliculas",
+      "item": [
+        {
+          "name": "Crear Película",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Inception\",\n  \"sinopsis\": \"Sueños dentro de sueños...\",\n  \"duracionMin\": 148,\n  \"clasificacion\": \"PG-13\",\n  \"genero\": [\"Accion\", \"Thriller\"],\n  \"estado\": \"ACTIVO\",\n  \"fechaEstreno\": \"2010-07-16\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/peliculas", "host": ["{{baseUrl}}"], "path": ["api","peliculas"] }
+          }
+        },
+        {
+          "name": "Listar Todas",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/peliculas/all", "host": ["{{baseUrl}}"], "path": ["api","peliculas","all"] }
+          }
+        },
+        {
+          "name": "Actualizar Película",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Inception Updated\",\n  \"estado\": \"ACTIVO\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/peliculas/2", "host": ["{{baseUrl}}"], "path": ["api","peliculas","2"] }
+          }
+        },
+        {
+          "name": "Eliminar Película",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/peliculas/2", "host": ["{{baseUrl}}"], "path": ["api","peliculas","2"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Turnos",
+      "item": [
+        {
+          "name": "Crear Turno",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"peliculaId\": 6,\n  \"sala\": \"SALA1\",\n  \"inicio\": \"2025-08-28T22:06:00\",\n  \"fin\": \"2025-08-28T23:46:00\",\n  \"precio\": 50,\n  \"idioma\": \"DOB\",\n  \"formato\": \"D2\",\n  \"aforo\": 5\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/turnos", "host": ["{{baseUrl}}"], "path": ["api","turnos"] }
+          }
+        },
+        {
+          "name": "Listar Turnos",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/turnos", "host": ["{{baseUrl}}"], "path": ["api","turnos"] }
+          }
+        },
+        {
+          "name": "Turno por ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/turnos/1", "host": ["{{baseUrl}}"], "path": ["api","turnos","1"] }
+          }
+        },
+        {
+          "name": "Actualizar Turno",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"precio\": 60,\n  \"estado\": \"ACTIVO\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/turnos/5", "host": ["{{baseUrl}}"], "path": ["api","turnos","5"] }
+          }
+        },
+        {
+          "name": "Eliminar Turno",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/turnos/5", "host": ["{{baseUrl}}"], "path": ["api","turnos","5"] }
+          }
+        },
+        {
+          "name": "Turnos Disponibles",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/turnos/disponibles?peliculaId=6&sala=SALA1&fecha=2025-08-28",
+              "host": ["{{baseUrl}}"],
+              "path": ["api","turnos","disponibles"],
+              "query": [
+                { "key": "peliculaId", "value": "6" },
+                { "key": "sala", "value": "SALA1" },
+                { "key": "fecha", "value": "2025-08-28" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
