@@ -1,4 +1,3 @@
-// src/common/guards/global-jwt-auth.guard.ts
 import {
   Injectable,
   CanActivate,
